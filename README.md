@@ -1,5 +1,5 @@
 # Salesforce Studies - Dev I
-Repositório para armazenar os desenvolvimentos realizados seguindo o trailmix de preparação para o exame da certificação de Salesforce Platform Developer I.
+Repositório para armazenar os desenvolvimentos realizados seguindo o trailmix (e estudos adicionais) de preparação para o exame da certificação de Salesforce Platform Developer I.
 
 ## Sobre a certificação Platform Developer I
 A certificação de  Salesforce Platform Developer I é focada para indivíduos que possuem conhecimento, habilidades e experiência na criação de aplicativos personalizados na plataforma Lightning do Salesforce. O exame abrange os recursos programáticos fundamentais da Plataforma Lightning para desenvolver lógica e interfaces de negócios personalizadas para estender o Salesforce usando componentes Apex, Visualforce e Lightning.
