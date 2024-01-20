@@ -1,0 +1,19 @@
+<template>
+    <lightning-input
+        type="number"
+        label="Annual Revenue"
+        formatter="currency"
+        value={annualRevenue}
+        onchange={handleChange}
+    >
+    </lightning-input>
+    <template if:true={accounts.length}>
+        <p>Accounts with Annual Revenue: {annualRevenue}</p>
+        <ul>
+            <template for:each={accounts} for:item="account">
+                <li key={account.Id}>{account.Name}</li>
+            </template>
+        </ul>
+    </template>
+    <lightning-button label="Reset" onclick={reset}></lightning-button>
+</template>
