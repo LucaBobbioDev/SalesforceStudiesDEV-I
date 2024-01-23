@@ -1,0 +1,13 @@
+<apex:page >
+    <apex:pageBlock title="User Status">
+        <apex:pageBlockSection columns="2">
+            {! $User.FirstName & ' ' & $User.LastName }
+            ({! $User.Username }) ({! IF($User.isActive, 'active', 'inactive') })
+            <p>Is it true?  {! IF( CONTAINS('salesforce.com','force.com'),'Yep', 'Nope') }</p>
+        </apex:pageBlockSection>
+        <apex:pageBlockSection columns="1">
+            <p> Today's Date is {! TODAY() } </p>
+			<p> Next week it will be {! TODAY() + 7 } </p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
