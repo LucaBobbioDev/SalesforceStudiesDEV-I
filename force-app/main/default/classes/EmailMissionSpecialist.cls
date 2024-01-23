@@ -7,8 +7,7 @@ public class EmailMissionSpecialist {
       	mail.setSubject(subject);
       	mail.setPlainTextBody(body);
         
-      	Messaging.SendEmailResult[] results = Messaging.sendEmail(
-            new Messaging.SingleEmailMessage[] { mail });
+      	Messaging.SendEmailResult[] results = Messaging.sendEmail(new Messaging.SingleEmailMessage[] { mail });
       	inspectResults(results);
    }
     
