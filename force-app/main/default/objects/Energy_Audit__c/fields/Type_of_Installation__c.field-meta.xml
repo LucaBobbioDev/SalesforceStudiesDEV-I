@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Type_of_Installation__c</fullName>
+    <externalId>false</externalId>
+    <label>Tipo de instalação</label>
+    <required>false</required>
+    <trackFeedHistory>true</trackFeedHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Telhado</fullName>
+                <default>false</default>
+                <label>Telhado</label>
+            </value>
+            <value>
+                <fullName>Vaga do carro</fullName>
+                <default>false</default>
+                <label>Vaga do carro</label>
+            </value>
+            <value>
+                <fullName>Montado no solo</fullName>
+                <default>false</default>
+                <label>Montado no solo</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>
