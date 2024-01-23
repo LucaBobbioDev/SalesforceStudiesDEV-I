@@ -11,4 +11,14 @@ public with sharing class TestAccountDeletion {
         System.assert(result.getErrors().size() > 0);
         System.assertEquals('Cannot delete account with related opportunities.', result.getErrors()[0].getMessage());
     }
+
+    @isTest static void TestDeleteAccountWithNoOpportunities() {
+        Account[] accounts = TestDataFactory.createAccountsWithOpps(1,0);
+
+        Test.startTest();
+            Database.DeleteResult result = Database.delete(accounts[0], false);
+        Test.stopTest();
+
+        System.assert(result.isSuccess());
+    }
 }
