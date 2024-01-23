@@ -34,4 +34,16 @@ public with sharing class TestAccountDeletion {
                                  result.getErrors()[0].getMessage());
         }
     }
+
+    @IsTest static void TestDeleteBulkAccountsWithNoOpportunities() {
+        Account[] accountList = TestDataFactory.createAccountsWithOpps(200,0);
+
+        Test.startTest();
+            Database.DeleteResult[] resultList = Database.delete(accountList, false);
+        Test.stopTest();
+        
+        for(Database.DeleteResult result : resultList) {
+            System.assert(result.isSuccess());
+        }
+    }
 }
