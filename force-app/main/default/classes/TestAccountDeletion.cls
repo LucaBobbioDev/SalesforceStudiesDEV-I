@@ -1,14 +1,10 @@
 @IsTest
 public with sharing class TestAccountDeletion {
     @IsTest static void TestDeleteAccountWithOneOpportunity() {
-        Account acct = new Account(Name='Test Account');
-        insert acct;
-
-        Opportunity opp = new Opportunity(Name=acct.Name + ' Opportunity', StageName='Prospecting', CloseDate=System.today().addMonths(1), AccountId=acct.Id);
-        insert opp;
+        Account[] accounts = TestDataFactory.createAccountsWithOpps(1,1);
 
         Test.startTest();
-            Database.DeleteResult result = Database.delete(acct, false);
+            Database.DeleteResult result = Database.delete(accounts[0], false);
         Test.stopTest();
     
         System.assert(!result.isSuccess());
