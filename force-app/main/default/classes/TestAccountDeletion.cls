@@ -12,7 +12,7 @@ public with sharing class TestAccountDeletion {
         System.assertEquals('Cannot delete account with related opportunities.', result.getErrors()[0].getMessage());
     }
 
-    @isTest static void TestDeleteAccountWithNoOpportunities() {
+    @IsTest static void TestDeleteAccountWithNoOpportunities() {
         Account[] accounts = TestDataFactory.createAccountsWithOpps(1,0);
 
         Test.startTest();
@@ -20,5 +20,18 @@ public with sharing class TestAccountDeletion {
         Test.stopTest();
 
         System.assert(result.isSuccess());
+    }
+
+    @IsTest static void TestDeleteBulkAccountsWithOneOpportunity() {
+        Account[] accountsList = TestDataFactory.createAccountsWithOpps(200,1);
+        Test.startTest();
+            Database.DeleteResult[] resultList = Database.delete(accountsList, false);
+        Test.stopTest();
+        for(Database.DeleteResult result : resultList) {
+            System.assert(!result.isSuccess());
+            System.assert(result.getErrors().size() > 0);
+            System.assertEquals('Cannot delete account with related opportunities.',
+                                 result.getErrors()[0].getMessage());
+        }
     }
 }
