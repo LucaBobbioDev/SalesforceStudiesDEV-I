@@ -1,7 +1,7 @@
 <apex:page >
     <h1>Status da estação</h1>
     <apex:form id="engineReadinessChecklist">
-        <apex:pageBlock title="Flight Systems Checklist">
+        <apex:pageBlock title="Station Check">
             <apex:pageBlockSection title="Engines">
                 <apex:inputCheckbox immediate="true"/>Engine 1
                 <apex:inputCheckbox immediate="true"/>Engine 2
