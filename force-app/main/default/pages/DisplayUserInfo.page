@@ -1,0 +1,11 @@
+<apex:page >
+    <apex:pageBlock title="Display - User Info">
+        <apex:pageBlockSection columns="1">
+            <apex:outputText value="Welcome, {!$User.FirstName} {!$User.LastName}" />
+            <p>Username: {!$User.Username}</p>
+            <p>The current company name for this user is: {!$User.CompanyName}</p>
+            <p>Is the user active?  {!$User.IsActive}</p>
+            <p>Country: {!$User.Country}</p>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+</apex:page>
