@@ -1,0 +1,7 @@
+<apex:page showHeader="false">
+    <h1>
+        Display Image - Visualforce page
+    </h1>
+    <br/>
+    <apex:image url="https://developer.salesforce.com/files/salesforce-developer-network-logo.png"/>
+</apex:page>
