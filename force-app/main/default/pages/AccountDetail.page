@@ -1,0 +1,10 @@
+<apex:page standardController="Account">
+    <apex:pageBlock title="Account Details">
+         <apex:pageBlockSection >
+            <apex:outputField value="{! Account.Name }"/>
+            <apex:outputField value="{! Account.CNPJ__c }"/>
+        </apex:pageBlockSection>
+    </apex:pageBlock>
+    <apex:detail />
+    <apex:relatedList list="Contacts"/>
+</apex:page>
