@@ -165,6 +165,10 @@
             <fieldType>InputField</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;&lt;code style=&quot;color: rgb(21, 21, 21); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;&lt;strong&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;/strong&gt;&lt;/code&gt;&lt;code style=&quot;color: rgb(18, 18, 18); font-size: 16px; background-color: rgb(255, 255, 255);&quot;&gt;You can&apos;t backdate an opportunity.&lt;/code&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!Estimated_Close_Date} &gt;= TODAY()</formulaExpression>
+            </validationRule>
         </fields>
         <fields>
             <name>Estimated_Amount</name>
@@ -196,6 +200,21 @@
             <fieldType>MultiSelectCheckboxes</fieldType>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>NextStepsWarning</name>
+            <fieldText>&lt;p&gt;You didn&apos;t select any Next Steps. Your manager may visit you to confirm your plan of action.&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Next_Steps</leftValueReference>
+                    <operator>IsNull</operator>
+                    <rightValue>
+                        <booleanValue>true</booleanValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
         </fields>
         <fields>
             <fieldType>ObjectProvided</fieldType>
