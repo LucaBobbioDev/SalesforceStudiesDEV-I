@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <apiVersion>59.0</apiVersion>
+    <choices>
+        <name>Confirm_product</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: monospace, monospace; color: rgb(30, 30, 30);&quot;&gt;Confirm product&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Follow_up_call</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: monospace, monospace; color: rgb(30, 30, 30);&quot;&gt;Follow-up call&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Identify_contacts</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: monospace, monospace; color: rgb(30, 30, 30);&quot;&gt;Identify contacts&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Research</name>
+        <choiceText>Research&lt;p&gt;&lt;br&gt;&lt;/p&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <choices>
+        <name>Site_visit</name>
+        <choiceText>&lt;span style=&quot;background-color: rgb(255, 255, 255); font-size: 16px; font-family: monospace, monospace; color: rgb(30, 30, 30);&quot;&gt;Site visit&lt;/span&gt;</choiceText>
+        <dataType>String</dataType>
+    </choices>
+    <dynamicChoiceSets>
+        <name>choiceType</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true"/>
+        <object xsi:nil="true"/>
+        <picklistField>Type</picklistField>
+        <picklistObject>Opportunity</picklistObject>
+        <sortOrder>Desc</sortOrder>
+    </dynamicChoiceSets>
     <environments>Default</environments>
     <formulas>
         <name>TodayPlus90</name>
@@ -45,6 +79,18 @@
                 <elementReference>Estimated_Close_Date</elementReference>
             </value>
         </inputAssignments>
+        <inputAssignments>
+            <field>NextStep</field>
+            <value>
+                <elementReference>Next_Steps</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type</field>
+            <value>
+                <elementReference>New_or_Existing_Customer</elementReference>
+            </value>
+        </inputAssignments>
         <object>Opportunity</object>
         <storeOutputAutomatically>true</storeOutputAutomatically>
     </recordCreates>
@@ -83,6 +129,28 @@
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>false</isRequired>
             <scale>2</scale>
+        </fields>
+        <fields>
+            <name>New_or_Existing_Customer</name>
+            <choiceReferences>choiceType</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>New or Existing Customer?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Next_Steps</name>
+            <choiceReferences>Confirm_product</choiceReferences>
+            <choiceReferences>Identify_contacts</choiceReferences>
+            <choiceReferences>Follow_up_call</choiceReferences>
+            <choiceReferences>Site_visit</choiceReferences>
+            <choiceReferences>Research</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Next Steps</fieldText>
+            <fieldType>MultiSelectCheckboxes</fieldType>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>false</isRequired>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
